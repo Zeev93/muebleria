@@ -14,7 +14,8 @@ class ProductoController extends Controller
      */
     public function index()
     {
-        //
+        $productos = Producto::all();
+        return view('productos.index', compact('productos'));
     }
 
     /**
@@ -24,7 +25,7 @@ class ProductoController extends Controller
      */
     public function create()
     {
-        //
+        return view('productos.create');
     }
 
     /**
@@ -35,7 +36,18 @@ class ProductoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            'nombre' => 'required',
+            'descripcion' => 'required',
+            'precio_compra' => 'required',
+            'precio_venta' => 'required',
+            'descuento' => 'required',
+            'categoria_id' => 'required'
+        ]);
+
+        $producto = new Producto($data);
+
+        return redirect('/')->with('status', 'Producto creado.');
     }
 
     /**
@@ -46,7 +58,7 @@ class ProductoController extends Controller
      */
     public function show(Producto $producto)
     {
-        //
+        return view('productos.show', compact('producto'));
     }
 
     /**
@@ -57,7 +69,7 @@ class ProductoController extends Controller
      */
     public function edit(Producto $producto)
     {
-        //
+        return view('productos.edit', compact('producto'));
     }
 
     /**
@@ -69,7 +81,24 @@ class ProductoController extends Controller
      */
     public function update(Request $request, Producto $producto)
     {
-        //
+        $data = $request->validate([
+            'nombre' => 'required',
+            'descripcion' => 'required',
+            'precio_compra' => 'required',
+            'precio_venta' => 'required',
+            'descuento' => 'required',
+            'categoria_id' => 'required'
+        ]);
+
+        $producto->nombre = $data['nombre'];
+        $producto->descripcion = $data['descripcion'];
+        $producto->precio_compra = $data['precio_compra'];
+        $producto->precio_venta = $data['precio_venta'];
+        $producto->descuento = $data['descuento'];
+        $producto->categoria_id = $data['categoria_id'];
+        $producto->save();
+
+        return redirect('/')->with('status', 'Producto actualizado');
     }
 
     /**
@@ -80,6 +109,7 @@ class ProductoController extends Controller
      */
     public function destroy(Producto $producto)
     {
-        //
+        $producto->delete();
+        return redirect('/')->with('status', 'Producto Eliminado');
     }
 }

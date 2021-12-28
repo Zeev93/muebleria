@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Inventario;
 use App\Models\Producto;
 use Illuminate\Database\Seeder;
 use Database\Factories\ProductoFactory;
@@ -20,6 +21,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Producto::factory(10)->create();
+        Inventario::factory(10)->create();
 
     }
 }

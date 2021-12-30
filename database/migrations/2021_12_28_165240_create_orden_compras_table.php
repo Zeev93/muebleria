@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateInventariosTable extends Migration
+class CreateOrdenComprasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,13 @@ class CreateInventariosTable extends Migration
      */
     public function up()
     {
-        Schema::create('inventarios', function (Blueprint $table) {
+        Schema::create('orden_compras', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('producto_id')->constrained();
-            $table->integer('stock');
+            $table->string('folio');
+            $table->date('fecha_compra');
+            $table->date('fecha_entrega');
+            $table->foreignId('user_id')->constrained();
+            // $table->foreignId('cliente_id')->constrained();
             $table->timestamps();
         });
     }
@@ -28,6 +31,6 @@ class CreateInventariosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('inventarios');
+        Schema::dropIfExists('orden_compras');
     }
 }

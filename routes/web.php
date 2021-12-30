@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\CategoriaController;
+use App\Http\Controllers\DetalleCompraController;
+use App\Http\Controllers\OrdenCompraController;
 use App\Http\Controllers\ProductoController;
 use Illuminate\Support\Facades\Route;
 
@@ -35,3 +37,21 @@ Route::get('/productos/{producto}/edit', [ProductoController::class, 'edit'])->n
 Route::post('/productos', [ProductoController::class, 'store'])->name('productos.store');
 Route::put('/productos/{producto}', [ProductoController::class, 'update'])->name('productos.update');
 Route::delete('/productos/{producto}', [ProductoController::class, 'destroy'])->name('productos.destroy');
+
+
+Route::get('/ordenes', [OrdenCompraController::class, 'index'])->name('ordenes.index');
+Route::get('/ordenes/create', [OrdenCompraController::class, 'create'])->name('ordenes.create');
+Route::get('/ordenes/{orden}', [OrdenCompraController::class, 'show'])->name('ordenes.show');
+Route::get('/ordenes/{orden}/edit', [OrdenCompraController::class, 'edit'])->name('ordenes.edit');
+Route::post('/ordenes', [OrdenCompraController::class, 'store'])->name('ordenes.store');
+Route::put('/ordenes/{orden}', [OrdenCompraController::class, 'update'])->name('ordenes.update');
+Route::delete('/ordenes/{orden}', [OrdenCompraController::class, 'destroy'])->name('ordenes.destroy');
+
+
+Route::get('/detalles', [DetalleCompraController::class, 'index'])->name('detalles.index');
+Route::get('/detalles/create', [DetalleCompraController::class, 'create'])->name('detalles.create');
+Route::get('/detalles/{ordenCompra}', [DetalleCompraController::class, 'show'])->name('detalles.show');
+Route::get('/detalles/{ordenCompra}/edit', [DetalleCompraController::class, 'edit'])->name('detalles.edit');
+Route::post('/detalles', [DetalleCompraController::class, 'store'])->name('detalles.store');
+Route::put('/detalles/{ordenCompra}', [DetalleCompraController::class, 'update'])->name('detalles.update');
+Route::delete('/detalles/{ordenCompra}', [DetalleCompraController::class, 'destroy'])->name('detalles.destroy');

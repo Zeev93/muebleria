@@ -42,7 +42,7 @@ class CategoriaController extends Controller
         ]);
 
         $categoria = new Categoria($data);
-        if($categoria){
+        if($categoria->save()){
             return redirect('/')->with('status' , 'Categoria creada correctamente');
         }
         return redirect('/')->with('status' , 'Error al crear categoria');

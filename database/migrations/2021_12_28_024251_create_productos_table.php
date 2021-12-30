@@ -20,6 +20,7 @@ class CreateProductosTable extends Migration
             $table->decimal('precio_compra', 10, 2);
             $table->decimal('precio_venta', 10, 2);
             $table->decimal('descuento', 3, 2)->default('0.0');
+            $table->integer('stock')->default(0);
             $table->foreignId('categoria_id')->constrained();
             $table->timestamps();
         });

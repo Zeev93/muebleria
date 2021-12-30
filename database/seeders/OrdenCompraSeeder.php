@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 
-class InventarioSeeder extends Seeder
+class OrdenCompraSeeder extends Seeder
 {
     /**
      * Run the database seeds.

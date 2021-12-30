@@ -46,6 +46,7 @@ class ProductoController extends Controller
         ]);
 
         $producto = new Producto($data);
+        $producto->save();
 
         return redirect('/')->with('status', 'Producto creado.');
     }

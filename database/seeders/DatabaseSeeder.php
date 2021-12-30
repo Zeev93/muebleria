@@ -2,10 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Models\Inventario;
+use App\Models\DetalleCompra;
+use App\Models\OrdenCompra;
 use App\Models\Producto;
 use Illuminate\Database\Seeder;
-use Database\Factories\ProductoFactory;
 
 class DatabaseSeeder extends Seeder
 {
@@ -18,10 +18,12 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             CategoriaSeeder::class,
+            UserSeeder::class,
         ]);
 
         Producto::factory(10)->create();
-        Inventario::factory(10)->create();
+        OrdenCompra::factory(10)->create();
+        DetalleCompra::factory(10)->create();
 
     }
 }
